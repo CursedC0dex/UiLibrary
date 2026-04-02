@@ -4,7 +4,7 @@ local Window = kavo.CreateLib {
 }
 
 -- Creating Tabs
-local Tab = main:NewTab({
+local Tab = Window:NewTab({
 	name = "Preview Tab ",
 	icon = "rbxassetid://6764432408"
 })
