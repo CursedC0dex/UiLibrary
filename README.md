@@ -101,7 +101,7 @@ local TextBox = Tab:NewTextBox({
 	title = "TextBox",
 	placeholder = "...",
 	callback = function(text)
-		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = text
+		print(text)
 	end
 })
 ```
