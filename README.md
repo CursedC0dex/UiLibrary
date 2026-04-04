@@ -6,7 +6,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Curse
 
 Main UI
 
-local Window = Library.CreateLib {
+local Window = Library:CreateLib {
 	name = "Cursed UI Library"
 }
 
