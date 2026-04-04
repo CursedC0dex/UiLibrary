@@ -1029,7 +1029,7 @@ function kavo:CreateLib(options)
 				Toggle["59"]["BackgroundTransparency"] = 1;
 				Toggle["59"]["Size"] = UDim2.new(1, -20, 1, 0);
 				Toggle["59"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-				Toggle["59"]["Text"] = [[Toggle]];
+				Toggle["59"]["Text"] = options.title;
 				Toggle["59"]["Name"] = [[Title]];
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.ToggleInActive.UIPadding
@@ -1439,7 +1439,7 @@ function kavo:CreateLib(options)
 				TextBox["6b"]["BackgroundTransparency"] = 1;
 				TextBox["6b"]["Size"] = UDim2.new(1, -60, 1, 0);
 				TextBox["6b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-				TextBox["6b"]["Text"] = [[TextBox]];
+				TextBox["6b"]["Text"] = options.title;
 				TextBox["6b"]["Name"] = [[Title]];
 
 
