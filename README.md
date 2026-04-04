@@ -22,7 +22,7 @@ local Tab = Window:NewTab({
 })
 ```
 
-Button
+**Button**
 ```
 local Button = Tab:NewButton({
 	name = "Button", 
@@ -31,7 +31,7 @@ local Button = Tab:NewButton({
 end})
 ```
 
-Labels
+**Labels**
 ```
 local Label = Tab:NewLabel({
 	message = "Label", 
@@ -52,7 +52,7 @@ local Warn = Tab:NewWarning({
 })
 ```
 
-Slider
+**Slider**
 ```
 local Slider = Tab:NewSlider({
 	title = "Slider",
@@ -63,7 +63,7 @@ local Slider = Tab:NewSlider({
 end})
 ```
 
-Toggle
+**Toggle**
 ```
 local Toggle = Tab:NewToggle({
 	title = "Toggle",
@@ -77,7 +77,7 @@ local Toggle = Tab:NewToggle({
 })
 ```
 
-DropDown
+**DropDown**
 ```
 local DropDown = Tab:NewDropDown({
 	title = "DropDown",
@@ -95,7 +95,7 @@ DropDown:Add("WS 10", 10)
 DropDown:Add("WS 30", 30)
 ```
 
-TextBox
+**TextBox**
 ```
 local TextBox = Tab:NewTextBox({
 	title = "TextBox",
@@ -106,7 +106,7 @@ local TextBox = Tab:NewTextBox({
 })
 ```
 
-KeyBind
+**KeyBind**
 ```
 local KeyBind = Tab:NewKeyBind({
 	title = "KeyBind",
