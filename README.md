@@ -1,6 +1,6 @@
 Made by ```cursedC0dex```
 
-#preview
+UiLibrary#preview
  
  Cursed Library
 
