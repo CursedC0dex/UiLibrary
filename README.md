@@ -2,11 +2,10 @@ Made by ```cursedC0dex```
  
 **Cursed Library**
 
-Loader
+**Loader**
 ```
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/CursedC0dex/UiLibrary/refs/heads/main/source.lua"))()
  ```
-
 
 **Main UI**
 ```
@@ -14,7 +13,6 @@ local Window = Library:CreateLib {
 	name = "Cursed UI Library"
 }
 ```
-
 
 **Tab**
 ```
