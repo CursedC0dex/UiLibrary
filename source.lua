@@ -1816,3 +1816,5 @@ function kavo:CreateLib(options)
 	
 	return GUI
 end
+
+return kavo
