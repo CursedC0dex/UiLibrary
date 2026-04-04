@@ -32,7 +32,7 @@ end
 
 function kavo:CreateLib(options)
 	options = kavo:validate({
-		name =  "UI Library Test"
+		name =  "Cursed UI Library"
 	}, options or {})
 
 	local GUI = {
