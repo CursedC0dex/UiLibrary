@@ -1,4 +1,4 @@
-##Cursed Library
+**Cursed Library**
 
 Loader
 
