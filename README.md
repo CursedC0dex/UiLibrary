@@ -1,4 +1,6 @@
- `-Cursed Library`
+Made by ```cursedC0dex```
+ 
+ Cursed Library
 
 Loader
 ```
