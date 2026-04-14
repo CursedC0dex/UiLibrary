@@ -893,23 +893,23 @@ function cursed:CreateLib(options)
 				Slider["3f"]["ZIndex"] = 1502;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Slider.SliderBack
-				Slider["42"] = Instance.new("Frame", Slider["3a"]);
-				Slider["42"]["BorderSizePixel"] = 0;
-				Slider["42"]["BackgroundColor3"] = Color3.fromRGB(6, 6, 6);
-				Slider["42"]["AnchorPoint"] = Vector2.new(0, 1);
-				Slider["42"]["Size"] = UDim2.new(1, 0, 0, 5);
-				Slider["42"]["Position"] = UDim2.new(0, 0, 1, 0);
-				Slider["42"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-				Slider["42"]["Name"] = [[SliderBack]];
-				Slider["42"]["ZIndex"] = 1503;
+				Slider["45"] = Instance.new("Frame", Slider["3a"]);
+				Slider["45"]["BorderSizePixel"] = 0;
+				Slider["45"]["BackgroundColor3"] = Color3.fromRGB(6, 6, 6);
+				Slider["45"]["AnchorPoint"] = Vector2.new(0, 1);
+				Slider["45"]["Size"] = UDim2.new(1, 0, 0, 5);
+				Slider["45"]["Position"] = UDim2.new(0, 0, 1, 0);
+				Slider["45"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+				Slider["45"]["Name"] = [[SliderBack]];
+				Slider["45"]["ZIndex"] = 1503;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Slider.SliderBack.UICorner
 				Slider["43"] = Instance.new("UICorner", Slider["42"]);
 
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Slider.SliderBack.UIStroke
-				Slider["44"] = Instance.new("UIStroke", Slider["42"]);
-				Slider["44"]["Color"] = Color3.fromRGB(76, 76, 76);
+				Slider["46"] = Instance.new("UIStroke", Slider["42"]);
+				Slider["46"]["Color"] = Color3.fromRGB(76, 76, 76);
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Slider.SliderBack.Draggable
 				Slider["4z"] = Instance.new("Frame", Slider["42"]);
@@ -921,7 +921,7 @@ function cursed:CreateLib(options)
 				Slider["4z"]["ZIndex"] = 1504;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Slider.SliderBack.Draggable.UICorner
-				Slider["44"] = Instance.new("UICorner", Slider["43"]);
+				Slider["47"] = Instance.new("UICorner", Slider["43"]);
 			end
 
 			-- Methods
