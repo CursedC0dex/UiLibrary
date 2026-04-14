@@ -13,9 +13,9 @@ local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection
 
 
 
-local kavo = {}
+local cursed = {}
 
-function kavo:validate(defaults, options)
+function cursed:validate(defaults, options)
 	for i, v in pairs(defaults) do
 		if options[i] == nil then
 			options[i] = v
@@ -24,14 +24,14 @@ function kavo:validate(defaults, options)
 	return options
 end
 
-function kavo:tween(object, goal, callback)
+function cursed:tween(object, goal, callback)
 	local tween = tweenService:Create(object, tweenInfo, goal)
 	tween.Completed:Connect(callback or function() end)
 	tween:Play()
 end
 
-function kavo:CreateLib(options)
-	options = kavo:validate({
+function cursed:CreateLib(options)
+	options = cursed:validate({
 		name =  "Cursed UI Library"
 	}, options or {})
 
@@ -60,6 +60,7 @@ function kavo:CreateLib(options)
 		GUI["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 		GUI["2"]["Name"] = [[Main]];
 		GUI["2"]["ClipsDescendants"] = false
+		GUI["2"]["ZIndex"] = 1000;
 
 		-- StarterGui.MyLibrary.Main.UICorner
 		GUI["3"] = Instance.new("UICorner", GUI["2"]);
@@ -144,7 +145,7 @@ function kavo:CreateLib(options)
 
 		-- StarterGui.MyLibrary.Main.TopBar.Extension
 		GUI["8"] = Instance.new("Frame", GUI["6"]);
-		GUI["8"]["ZIndex"] = 3;
+		GUI["8"]["ZIndex"] = 1001;
 		GUI["8"]["BorderSizePixel"] = 0;
 		GUI["8"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
 		GUI["8"]["AnchorPoint"] = Vector2.new(0.5, 1);
@@ -155,7 +156,7 @@ function kavo:CreateLib(options)
 
 		-- StarterGui.MyLibrary.Main.TopBar.Title
 		GUI["9"] = Instance.new("TextLabel", GUI["6"]);
-		GUI["9"]["ZIndex"] = 3;
+		GUI["9"]["ZIndex"] = 1002;
 		GUI["9"]["BorderSizePixel"] = 0;
 		GUI["9"]["TextSize"] = 14;
 		GUI["9"]["TextXAlignment"] = Enum.TextXAlignment.Left;
@@ -174,7 +175,7 @@ function kavo:CreateLib(options)
 
 		-- StarterGui.MyLibrary.Main.TopBar.ExitBtn
 		GUI["b"] = Instance.new("ImageLabel", GUI["6"]);
-		GUI["b"]["ZIndex"] = 3;
+		GUI["b"]["ZIndex"] = 1003;
 		GUI["b"]["AnchorPoint"] = Vector2.new(1, 0.5);
 		GUI["b"]["Image"] = [[rbxassetid://8445470984]];
 		GUI["b"]["ImageRectSize"] = Vector2.new(96, 96);
@@ -195,7 +196,7 @@ function kavo:CreateLib(options)
 
 		-- StarterGui.MyLibrary.Main.TopBar.Line
 		GUI["d"] = Instance.new("Frame", GUI["6"]);
-		GUI["d"]["ZIndex"] = 3;
+		GUI["d"]["ZIndex"] = 1004;
 		GUI["d"]["BorderSizePixel"] = 0;
 		GUI["d"]["BackgroundColor3"] = Color3.fromRGB(81, 81, 81);
 		GUI["d"]["AnchorPoint"] = Vector2.new(0, 1);
@@ -206,7 +207,7 @@ function kavo:CreateLib(options)
 
 		-- StarterGui.MyLibrary.Main.TopBar.MinBtn
 		GUI["e"] = Instance.new("ImageLabel", GUI["6"]);
-		GUI["e"]["ZIndex"] = 3;
+		GUI["e"]["ZIndex"] = 1005;
 		GUI["e"]["AnchorPoint"] = Vector2.new(1, 0.5);
 		GUI["e"]["Image"] = [[rbxassetid://91077096614618]];
 		GUI["e"]["ImageRectSize"] = Vector2.new(90, 90);
@@ -225,14 +226,14 @@ function kavo:CreateLib(options)
 
 				if isMinimized then
 					-- Minimize: shrink to title bar only
-					kavo:tween(GUI["2"], {Size = minimizedSize})
+					cursed:tween(GUI["2"], {Size = minimizedSize})
 					-- Hide content and navigation
 					GUI["20"].Visible = false  -- Content container
 					GUI["10"].Visible = false  -- Navigation sidebar
 					GUI["4"].Visible = false
 				else
 					-- Restore: back to original size
-					kavo:tween(GUI["2"], {Size = originalSize})
+					cursed:tween(GUI["2"], {Size = originalSize})
 					-- Show content and navigation
 					GUI["20"].Visible = true
 					GUI["10"].Visible = true
@@ -255,6 +256,7 @@ function kavo:CreateLib(options)
 		GUI["20"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 		GUI["20"]["Name"] = [[ContentContainer]];
 		GUI["20"]["BackgroundTransparency"] = 1;
+		GUI["20"]["ZIndex"] = 1006;
 	end
 	
 	
@@ -268,6 +270,7 @@ function kavo:CreateLib(options)
 		GUI["10"]["Position"] = UDim2.new(0, 0, 0, 30);
 		GUI["10"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 		GUI["10"]["Name"] = [[Navigation]];
+		GUI["00"]["ZIndex"] = 1007;
 
 		-- StarterGui.MyLibrary.Main.Navigation.UICorner
 		GUI["11"] = Instance.new("UICorner", GUI["10"]);
@@ -279,6 +282,7 @@ function kavo:CreateLib(options)
 		GUI["12"]["Size"] = UDim2.new(1, 0, 0, 10);
 		GUI["12"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 		GUI["12"]["Name"] = [[Hide]];
+		GUI["12"]["ZIndex"] = 1008;
 
 		-- StarterGui.MyLibrary.Main.Navigation.Hide2
 		GUI["13"] = Instance.new("Frame", GUI["10"]);
@@ -289,6 +293,7 @@ function kavo:CreateLib(options)
 		GUI["13"]["Position"] = UDim2.new(1, 0, 0, 0);
 		GUI["13"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 		GUI["13"]["Name"] = [[Hide2]];
+		GUI["13"]["ZIndex"] = 1009;
 
 		-- StarterGui.MyLibrary.Main.Navigation.ButtonHolder
 		GUI["14"] = Instance.new("Frame", GUI["10"]);
@@ -298,6 +303,7 @@ function kavo:CreateLib(options)
 		GUI["14"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 		GUI["14"]["Name"] = [[ButtonHolder]];
 		GUI["14"]["BackgroundTransparency"] = 1;
+		GUI["14"]["ZIndex"] = 1010;
 
 		-- StarterGui.MyLibrary.Main.Navigation.ButtonHolder.UIPadding
 		GUI["15"] = Instance.new("UIPadding", GUI["14"]);
@@ -318,10 +324,11 @@ function kavo:CreateLib(options)
 		GUI["1d"]["Position"] = UDim2.new(1, 0, 0, 0);
 		GUI["1d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 		GUI["1d"]["Name"] = [[Line]];
+		GUI["1d"]["ZIndex"] = 1011;
 	end
 	
 	function GUI:NewTab(options)
-		options = kavo:validate({
+		options = cursed:validate({
 			name =  "Preview Tab",
 			icon = "rbxassetid://6764432408"
 		}, options or {})
@@ -346,6 +353,7 @@ function kavo:CreateLib(options)
 			Tab["1a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 			Tab["1a"]["Text"] = options.name;
 			Tab["1a"]["Name"] = [[Inactive]];
+			Tab["1a"]["ZIndex"] = 1100;
 			
 			-- StarterGui.MyLibrary.Main.Navigation.ButtonHolder.Inactive.UIPadding
 			Tab["1b"] = Instance.new("UIPadding", Tab["1a"]);
@@ -363,6 +371,7 @@ function kavo:CreateLib(options)
 			Tab["1c"]["ImageRectOffset"] = Vector2.new(150, 800);
 			Tab["1c"]["Name"] = [[Icon]];
 			Tab["1c"]["Position"] = UDim2.new(0, -22, 0.5, 0);
+			Tab["1c"]["ZIndex"] = 1101;
 			
 			-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab
 			Tab["1f"] = Instance.new("ScrollingFrame", GUI["20"]);
@@ -376,6 +385,7 @@ function kavo:CreateLib(options)
 			Tab["1f"]["ScrollBarThickness"] = 0;
 			Tab["1f"]["BackgroundTransparency"] = 1;
 			Tab["1f"].Visible = false
+			Tab["1f"]["ZIndex"] = 1102;
 			
 			-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.UIPadding
 			Tab["26"] = Instance.new("UIPadding", Tab["1f"]);
@@ -400,7 +410,7 @@ function kavo:CreateLib(options)
 			Tab["1f"].ChildAdded:Connect(updateCanvasSize)
 			Tab["1f"].ChildRemoved:Connect(updateCanvasSize)
 			
-			task.wait() -- Wait one frame for layout to calculate
+			task.wait()
 			updateCanvasSize()
 		end
 		
@@ -412,11 +422,10 @@ function kavo:CreateLib(options)
 				end
 
 				Tab.Active = true
-				kavo:tween(Tab["1a"], {BackgroundTransparency = 0.9})
-				kavo:tween(Tab["1a"], {TextColor3 = Color3.fromRGB(255,255,255)})
-				kavo:tween(Tab["1c"], {ImageColor3 = Color3.fromRGB(255,255,255)})
+				cursed:tween(Tab["1a"], {BackgroundTransparency = 0.9})
+				cursed:tween(Tab["1a"], {TextColor3 = Color3.fromRGB(255,255,255)})
+				cursed:tween(Tab["1c"], {ImageColor3 = Color3.fromRGB(255,255,255)})
 
-				-- ✅ Show this tab's content
 				Tab["1f"].Visible = true
 
 				GUI.CurrentTab = Tab
@@ -427,11 +436,10 @@ function kavo:CreateLib(options)
 			if Tab.Active then
 				Tab.Active = false
 				Tab.Hover = false
-				kavo:tween(Tab["1a"], {BackgroundTransparency = 1})
-				kavo:tween(Tab["1a"], {TextColor3 = Color3.fromRGB(150,150,150)})
-				kavo:tween(Tab["1c"], {ImageColor3 = Color3.fromRGB(150, 150, 150)})
+				cursed:tween(Tab["1a"], {BackgroundTransparency = 1})
+				cursed:tween(Tab["1a"], {TextColor3 = Color3.fromRGB(150,150,150)})
+				cursed:tween(Tab["1c"], {ImageColor3 = Color3.fromRGB(150, 150, 150)})
 
-				-- ✅ Hide this tab's content
 				Tab["1f"].Visible = false
 			end
 		end
@@ -442,8 +450,8 @@ function kavo:CreateLib(options)
 				Tab.Hover = true
 
 				if not Tab.Active then
-					kavo:tween(Tab["1a"], {TextColor3 = Color3.fromRGB(255,255,255)})
-					kavo:tween(Tab["1c"], {ImageColor3 = Color3.fromRGB(255,255,255)})
+					cursed:tween(Tab["1a"], {TextColor3 = Color3.fromRGB(255,255,255)})
+					cursed:tween(Tab["1c"], {ImageColor3 = Color3.fromRGB(255,255,255)})
 				end
 			end)
 			
@@ -451,8 +459,8 @@ function kavo:CreateLib(options)
 				Tab.Hover = false
 
 				if not Tab.Active then
-					kavo:tween(Tab["1a"], {TextColor3 = Color3.fromRGB(150,150,150)})
-					kavo:tween(Tab["1c"], {ImageColor3 = Color3.fromRGB(150, 150, 150)})
+					cursed:tween(Tab["1a"], {TextColor3 = Color3.fromRGB(150,150,150)})
+					cursed:tween(Tab["1c"], {ImageColor3 = Color3.fromRGB(150, 150, 150)})
 				end
 			end)
 			
@@ -473,7 +481,7 @@ function kavo:CreateLib(options)
 		
 		
 		function Tab:NewButton(options)
-			options = kavo:validate({
+			options = cursed:validate({
 				name =  "Preview Buton",
 				callback = function() end
 			}, options or {})
@@ -492,6 +500,7 @@ function kavo:CreateLib(options)
 				Button["20"]["Size"] = UDim2.new(1, 0, 0, 30);
 				Button["20"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				Button["20"]["Name"] = [[Button]];
+				Button["20"]["ZIndex"] = 1200;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Button.UICorner
 				Button["21"] = Instance.new("UICorner", Button["20"]);
@@ -515,6 +524,7 @@ function kavo:CreateLib(options)
 				Button["23"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				Button["23"]["Text"] = options.name;
 				Button["23"]["Name"] = [[Title]];
+				Button["23"]["ZIndex"] = 1201;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Button.UIPadding
 				Button["24"] = Instance.new("UIPadding", Button["20"]);
@@ -533,6 +543,7 @@ function kavo:CreateLib(options)
 				Button["25"]["ImageRectOffset"] = Vector2.new(400, 0);
 				Button["25"]["Name"] = [[Icon]];
 				Button["25"]["Position"] = UDim2.new(1, 0, 0.5, 0);
+				Button["25"]["ZIndex"] = 1202;
 			end
 			
 				-- Methods
@@ -545,7 +556,7 @@ function kavo:CreateLib(options)
 				Button["20"].MouseEnter:Connect(function()
 					Button.Hover = true
 
-					kavo:tween(Button["22"], {Color = Color3.fromRGB(61,61,61)})
+					cursed:tween(Button["22"], {Color = Color3.fromRGB(61,61,61)})
 
 				end)
 				
@@ -553,7 +564,7 @@ function kavo:CreateLib(options)
 					Button.Hover = false
 
 					if not Button.MouseDown then
-						kavo:tween(Button["22"], {Color = Color3.fromRGB(81,81,81)})
+						cursed:tween(Button["22"], {Color = Color3.fromRGB(81,81,81)})
 					end
 				end)
 				
@@ -562,8 +573,8 @@ function kavo:CreateLib(options)
 
 					if input.UserInputType == Enum.UserInputType.MouseButton1 and Button.Hover then
 						Button.MouseDown = true
-						kavo:tween(Button["20"], {BackgroundColor3 = Color3.fromRGB(51,51,51)})
-						kavo:tween(Button["22"], {Color = Color3.fromRGB(81,81,81)})
+						cursed:tween(Button["20"], {BackgroundColor3 = Color3.fromRGB(51,51,51)})
+						cursed:tween(Button["22"], {Color = Color3.fromRGB(81,81,81)})
 						options.callback()
 					end
 				end)
@@ -576,12 +587,12 @@ function kavo:CreateLib(options)
 
 						if Button.Hover then
 							-- Hover state	
-							kavo:tween(Button["20"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
-							kavo:tween(Button["22"], {Color = Color3.fromRGB(101,101,101)})
+							cursed:tween(Button["20"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
+							cursed:tween(Button["22"], {Color = Color3.fromRGB(101,101,101)})
 						else
 							-- Reset
-							kavo:tween(Button["20"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
-							kavo:tween(Button["22"], {Color = Color3.fromRGB(81,81,81)})
+							cursed:tween(Button["20"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
+							cursed:tween(Button["22"], {Color = Color3.fromRGB(81,81,81)})
 
 						end
 					end
@@ -592,7 +603,7 @@ function kavo:CreateLib(options)
 		end
 		
 		function Tab:NewLabel(options)
-			options = kavo:validate({
+			options = cursed:validate({
 				message = "Preview Label",
 				icon = ""
 			}, options or {})
@@ -607,6 +618,7 @@ function kavo:CreateLib(options)
 				Label["34"]["Size"] = UDim2.new(1, 0, 0, 25);
 				Label["34"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				Label["34"]["Name"] = [[Label]];
+				Label["34"]["ZIndex"] = 1203;
 
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Label.UICorner
@@ -634,6 +646,7 @@ function kavo:CreateLib(options)
 				Label["37"]["Name"] = [[Title]];
 				Label["37"]["Text"] = options.message;
 				Label["37"]["Position"] = UDim2.new(0, 20, 0, 0);
+				Label["37"]["ZIndex"] = 1204;
 
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Label.UIPadding
@@ -655,13 +668,14 @@ function kavo:CreateLib(options)
 				Label["39"]["ImageRectOffset"] = Vector2.new(804, 304);
 				Label["39"]["Name"] = [[Icon]];
 				Label["39"]["Position"] = UDim2.new(0, -2, 0.5, 0);
+				Label["39"]["ZIndex"] = 1205;
 			end
 			
 			return Label
 		end
 		
 		function Tab:NewInfo(options)
-			options = kavo:validate({
+			options = cursed:validate({
 				message = "Preview Info",
 				icon = "rbxassetid://8445471499"
 			}, options or {})
@@ -676,6 +690,7 @@ function kavo:CreateLib(options)
 				Info["2e"]["Size"] = UDim2.new(1, 0, 0, 25);
 				Info["2e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				Info["2e"]["Name"] = [[Info]];
+				Info["2e"]["ZIndex"] = 1300;
 
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Info.UICorner
@@ -703,6 +718,7 @@ function kavo:CreateLib(options)
 				Info["31"]["Text"] = options.message;
 				Info["31"]["Name"] = [[Title]];
 				Info["31"]["Position"] = UDim2.new(0, 20, 0, 0);
+				Info["31"]["ZIndex"] = 1301;
 
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Info.UIPadding
@@ -724,13 +740,14 @@ function kavo:CreateLib(options)
 				Info["33"]["ImageRectOffset"] = Vector2.new(304, 104);
 				Info["33"]["Name"] = [[Icon]];
 				Info["33"]["Position"] = UDim2.new(0, -3, 0.5, 0);
+				Info["33"]["ZIndex"] = 1302;
 			end
 			
 			return Info
 		end
 		
 		function Tab:NewWarning(options)
-			options = kavo:validate({
+			options = cursed:validate({
 				message = "Preview Warning",
 				icon = "rbxassetid://6764432408"
 			}, options or {})
@@ -745,6 +762,7 @@ function kavo:CreateLib(options)
 				Warning["28"]["Size"] = UDim2.new(1, 0, 0, 25);
 				Warning["28"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				Warning["28"]["Name"] = [[Warning]];
+				Warning["28"]["ZIndex"] = 1400;
 
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Warning.UICorner
@@ -772,6 +790,7 @@ function kavo:CreateLib(options)
 				Warning["2b"]["Text"] = options.message;
 				Warning["2b"]["Name"] = [[Title]];
 				Warning["2b"]["Position"] = UDim2.new(0, 20, 0, 0);
+				Warning["2b"]["ZIndex"] = 1401;
 
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Warning.UIPadding
@@ -794,13 +813,14 @@ function kavo:CreateLib(options)
 				Warning["2d"]["ImageRectOffset"] = Vector2.new(0, 900);
 				Warning["2d"]["Name"] = [[Icon]];
 				Warning["2d"]["Position"] = UDim2.new(0, -3, 0.5, 0);
+				Warning["2d"]["ZIndex"] = 1402;
 			end
 			
 			return Warning
 		end
 		
 		function Tab:NewSlider(options)
-			options = kavo:validate({
+			options = cursed:validate({
 				title = "Preview Slider",
 				min = 0,
 				max = 100,
@@ -822,6 +842,7 @@ function kavo:CreateLib(options)
 				Slider["3a"]["Size"] = UDim2.new(1, 0, 0, 40);
 				Slider["3a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				Slider["3a"]["Name"] = [[Slider]];
+				Slider["3a"]["ZIndex"] = 1500;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Slider.UICorner
 				Slider["3b"] = Instance.new("UICorner", Slider["3a"]);
@@ -845,6 +866,7 @@ function kavo:CreateLib(options)
 				Slider["3f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				Slider["3f"]["Text"] = options.title;
 				Slider["3f"]["Name"] = [[Title]];
+				Slider["3f"]["ZIndex"] = 1501;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Slider.UIPadding
 				Slider["42"] = Instance.new("UIPadding", Slider["3a"]);
@@ -868,6 +890,7 @@ function kavo:CreateLib(options)
 				Slider["3f"]["Text"] = [[100]];
 				Slider["3f"]["Name"] = [[Value]];
 				Slider["3f"]["Position"] = UDim2.new(1, 0, 0, 0);
+				Slider["3f"]["ZIndex"] = 1502;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Slider.SliderBack
 				Slider["42"] = Instance.new("Frame", Slider["3a"]);
@@ -878,6 +901,7 @@ function kavo:CreateLib(options)
 				Slider["42"]["Position"] = UDim2.new(0, 0, 1, 0);
 				Slider["42"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				Slider["42"]["Name"] = [[SliderBack]];
+				Slider["42"]["ZIndex"] = 1503;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Slider.SliderBack.UICorner
 				Slider["43"] = Instance.new("UICorner", Slider["42"]);
@@ -894,6 +918,7 @@ function kavo:CreateLib(options)
 				Slider["4z"]["Size"] = UDim2.new(0.5, 0, 1, 0);
 				Slider["4z"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				Slider["4z"]["Name"] = [[Draggable]];
+				Slider["4z"]["ZIndex"] = 1504;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Slider.SliderBack.Draggable.UICorner
 				Slider["44"] = Instance.new("UICorner", Slider["43"]);
@@ -923,9 +948,9 @@ function kavo:CreateLib(options)
 				Slider["3a"].MouseEnter:Connect(function()
 					Slider.Hover = true
 
-					kavo:tween(Slider["3c"], {Color = Color3.fromRGB(61,61,61)})
-					kavo:tween(Slider["42"], {BackgroundColor3  = Color3.fromRGB(41,41,41)})
-					--kavo:tween(Slider["41"], {BackgroundColor3 = Color3.fromRGB(82,82,82)})
+					cursed:tween(Slider["3c"], {Color = Color3.fromRGB(61,61,61)})
+					cursed:tween(Slider["42"], {BackgroundColor3  = Color3.fromRGB(41,41,41)})
+					--cursed:tween(Slider["41"], {BackgroundColor3 = Color3.fromRGB(82,82,82)})
 
 				end)
 
@@ -933,9 +958,9 @@ function kavo:CreateLib(options)
 					Slider.Hover = false
 
 					if not Slider.MouseDown then
-						kavo:tween(Slider["3c"], {Color = Color3.fromRGB(81,81,81)})
-						kavo:tween(Slider["42"], {BackgroundColor3  = Color3.fromRGB(61,61,61)})
-						--kavo:tween(Slider["41"], {BackgroundColor3 = Color3.fromRGB(82,82,82)})
+						cursed:tween(Slider["3c"], {Color = Color3.fromRGB(81,81,81)})
+						cursed:tween(Slider["42"], {BackgroundColor3  = Color3.fromRGB(61,61,61)})
+						--cursed:tween(Slider["41"], {BackgroundColor3 = Color3.fromRGB(82,82,82)})
 					end
 				end)
 
@@ -944,10 +969,10 @@ function kavo:CreateLib(options)
 
 					if input.UserInputType == Enum.UserInputType.MouseButton1 and Slider.Hover then
 						Slider.MouseDown = true
-						kavo:tween(Slider["3a"], {BackgroundColor3 = Color3.fromRGB(51,51,51)})
-						kavo:tween(Slider["3c"], {Color = Color3.fromRGB(81,81,81)})
-						kavo:tween(Slider["42"], {BackgroundColor3  = Color3.fromRGB(101,101,101)})
-						--kavo:tween(Slider["41"], {BackgroundColor3 = Color3.fromRGB(51,51,51)})
+						cursed:tween(Slider["3a"], {BackgroundColor3 = Color3.fromRGB(51,51,51)})
+						cursed:tween(Slider["3c"], {Color = Color3.fromRGB(81,81,81)})
+						cursed:tween(Slider["42"], {BackgroundColor3  = Color3.fromRGB(101,101,101)})
+						--cursed:tween(Slider["41"], {BackgroundColor3 = Color3.fromRGB(51,51,51)})
 
 						if not Slider.Connection then
 							Slider.Connection = runService.RenderStepped:Connect(function()
@@ -965,17 +990,17 @@ function kavo:CreateLib(options)
 
 						if Slider.Hover then
 							-- Hover state	
-							kavo:tween(Slider["3a"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
-							kavo:tween(Slider["3c"], {Color = Color3.fromRGB(102,102,102)})
-							kavo:tween(Slider["42"], {BackgroundColor3  = Color3.fromRGB(82,82,82)})
-							--kavo:tween(Slider["41"], {BackgroundColor3 = Color3.fromRGB(102,102,102)})
+							cursed:tween(Slider["3a"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
+							cursed:tween(Slider["3c"], {Color = Color3.fromRGB(102,102,102)})
+							cursed:tween(Slider["42"], {BackgroundColor3  = Color3.fromRGB(82,82,82)})
+							--cursed:tween(Slider["41"], {BackgroundColor3 = Color3.fromRGB(102,102,102)})
 
 						else
 							-- Reset
-							kavo:tween(Slider["3a"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
-							kavo:tween(Slider["3c"], {Color = Color3.fromRGB(81,81,81)})
-							kavo:tween(Slider["42"], {BackgroundColor3  = Color3.fromRGB(61,61,61)})
-							--kavo:tween(Slider["41"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
+							cursed:tween(Slider["3a"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
+							cursed:tween(Slider["3c"], {Color = Color3.fromRGB(81,81,81)})
+							cursed:tween(Slider["42"], {BackgroundColor3  = Color3.fromRGB(61,61,61)})
+							--cursed:tween(Slider["41"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
 
 						end
 						if Slider.Connection then Slider.Connection:Disconnect() end
@@ -988,7 +1013,7 @@ function kavo:CreateLib(options)
 		end
 		
 		function Tab:NewToggle(options)
-			options = kavo:validate({
+			options = cursed:validate({
 				title = "Preview Toggle",
 				callback = function() end
 			}, options or {})
@@ -1008,6 +1033,7 @@ function kavo:CreateLib(options)
 				Toggle["56"]["Size"] = UDim2.new(1, 0, 0, 30);
 				Toggle["56"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				Toggle["56"]["Name"] = [[ToggleInActive]];
+				Toggle["56"]["ZIndex"] = 1600;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.ToggleInActive.UICorner
 				Toggle["57"] = Instance.new("UICorner", Toggle["56"]);
@@ -1031,6 +1057,7 @@ function kavo:CreateLib(options)
 				Toggle["59"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				Toggle["59"]["Text"] = options.title;
 				Toggle["59"]["Name"] = [[Title]];
+				Toggle["59"]["ZIndex"] = 1601;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.ToggleInActive.UIPadding
 				Toggle["5a"] = Instance.new("UIPadding", Toggle["56"]);
@@ -1048,6 +1075,7 @@ function kavo:CreateLib(options)
 				Toggle["5b"]["Position"] = UDim2.new(1, -3, 0.5, 0);
 				Toggle["5b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				Toggle["5b"]["Name"] = [[CheckmarkHolder]];
+				Toggle["5b"]["ZIndex"] = 1602;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.ToggleInActive.CheckmarkHolder.UICorner
 				Toggle["5c"] = Instance.new("UICorner", Toggle["5b"]);
@@ -1068,6 +1096,7 @@ function kavo:CreateLib(options)
 				Toggle["5e"]["ImageRectOffset"] = Vector2.new(200, 700);
 				Toggle["5e"]["Name"] = [[Checkmark]];
 				Toggle["5e"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+				Toggle["5e"]["ZIndex"] = 1603;
 			end
 			
 			-- Methods
@@ -1079,13 +1108,13 @@ function kavo:CreateLib(options)
 				end
 
 				if Toggle.State then
-					kavo:tween(Toggle["5b"], {BackgroundColor3 = Color3.fromRGB(9, 141, 0)})
-					kavo:tween(Toggle["5e"], {ImageTransparency = 0})
-					kavo:tween(Toggle["5d"], {Color = Color3.fromRGB(14, 213, 0)})
+					cursed:tween(Toggle["5b"], {BackgroundColor3 = Color3.fromRGB(9, 141, 0)})
+					cursed:tween(Toggle["5e"], {ImageTransparency = 0})
+					cursed:tween(Toggle["5d"], {Color = Color3.fromRGB(14, 213, 0)})
 				else
-					kavo:tween(Toggle["5b"], {BackgroundColor3 = Color3.fromRGB(50, 50, 50)})
-					kavo:tween(Toggle["5e"], {ImageTransparency = 1})
-					kavo:tween(Toggle["5d"], {Color = Color3.fromRGB(81, 81, 81)})
+					cursed:tween(Toggle["5b"], {BackgroundColor3 = Color3.fromRGB(50, 50, 50)})
+					cursed:tween(Toggle["5e"], {ImageTransparency = 1})
+					cursed:tween(Toggle["5d"], {Color = Color3.fromRGB(81, 81, 81)})
 				end
 
 				options.callback(Toggle.State)
@@ -1096,7 +1125,7 @@ function kavo:CreateLib(options)
 				Toggle["56"].MouseEnter:Connect(function()
 					Toggle.Hover = true
 
-					kavo:tween(Toggle["58"], {Color = Color3.fromRGB(61,61,61)})
+					cursed:tween(Toggle["58"], {Color = Color3.fromRGB(61,61,61)})
 
 				end)
 
@@ -1104,7 +1133,7 @@ function kavo:CreateLib(options)
 					Toggle.Hover = false
 
 					if not Toggle.MouseDown then
-						kavo:tween(Toggle["58"], {Color = Color3.fromRGB(81,81,81)})
+						cursed:tween(Toggle["58"], {Color = Color3.fromRGB(81,81,81)})
 					end
 				end)
 
@@ -1113,8 +1142,8 @@ function kavo:CreateLib(options)
 
 					if input.UserInputType == Enum.UserInputType.MouseButton1 and Toggle.Hover then
 						Toggle.MouseDown = true
-						kavo:tween(Toggle["56"], {BackgroundColor3 = Color3.fromRGB(51,51,51)})
-						kavo:tween(Toggle["58"], {Color = Color3.fromRGB(81, 81, 81)})
+						cursed:tween(Toggle["56"], {BackgroundColor3 = Color3.fromRGB(51,51,51)})
+						cursed:tween(Toggle["58"], {Color = Color3.fromRGB(81, 81, 81)})
 						Toggle:Toggle()
 					end
 				end)
@@ -1126,11 +1155,11 @@ function kavo:CreateLib(options)
 						Toggle.MouseDown = false
 
 						if Toggle.Hover then
-							kavo:tween(Toggle["56"], {BackgroundColor3 = Color3.fromRGB(31, 31, 31)})
-							kavo:tween(Toggle["58"], {Color = Color3.fromRGB(101,101,101)})
+							cursed:tween(Toggle["56"], {BackgroundColor3 = Color3.fromRGB(31, 31, 31)})
+							cursed:tween(Toggle["58"], {Color = Color3.fromRGB(101,101,101)})
 						else
-							kavo:tween(Toggle["56"], {BackgroundColor3 = Color3.fromRGB(31, 31, 31)})
-							kavo:tween(Toggle["58"], {Color = Color3.fromRGB(81,81,81)})
+							cursed:tween(Toggle["56"], {BackgroundColor3 = Color3.fromRGB(31, 31, 31)})
+							cursed:tween(Toggle["58"], {Color = Color3.fromRGB(81,81,81)})
 						end
 					end
 				end)
@@ -1140,7 +1169,7 @@ function kavo:CreateLib(options)
 		end
 		
 		function Tab:NewDropDown(options)
-			options = kavo:validate({
+			options = cursed:validate({
 				title = "Preview DropDown",
 				callback = function(v) end,
 				items = {}
@@ -1163,6 +1192,7 @@ function kavo:CreateLib(options)
 				DropDown["45"]["Size"] = UDim2.new(1, 0, 0, 30);
 				DropDown["45"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				DropDown["45"]["Name"] = [[DropDown]];
+				DropDown["45"]["ZIndex"] = 1700;
 				
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.DropDown.UICorner
 				DropDown["46"] = Instance.new("UICorner", DropDown["45"]);
@@ -1187,6 +1217,7 @@ function kavo:CreateLib(options)
 				DropDown["48"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				DropDown["48"]["Text"] = options.title;
 				DropDown["48"]["Name"] = [[Title]];
+				DropDown["48"]["ZIndex"] = 1701;
 				
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.DropDown.UIPadding
 				DropDown["49"] = Instance.new("UIPadding", DropDown["45"]);
@@ -1205,6 +1236,7 @@ function kavo:CreateLib(options)
 				DropDown["4a"]["ImageRectOffset"] = Vector2.new(150, 0);
 				DropDown["4a"]["Name"] = [[Icon]];
 				DropDown["4a"]["Position"] = UDim2.new(1, 0, 0, 0);
+				DropDown["4a"]["ZIndex"] = 1702;
 				
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.DropDown.OptionHolder
 				DropDown["4b"] = Instance.new("Frame", DropDown["45"]);
@@ -1216,6 +1248,7 @@ function kavo:CreateLib(options)
 				DropDown["4b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				DropDown["4b"]["Name"] = [[OptionHolder]];
 				DropDown["4b"]["BackgroundTransparency"] = 1;
+				DropDown["4b"]["ZIndex"] = 1703;
 				
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.DropDown.OptionHolder.UIListLayout
 				DropDown["4c"] = Instance.new("UIListLayout", DropDown["4b"]);
@@ -1250,6 +1283,7 @@ function kavo:CreateLib(options)
 					item.instance["4d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 					item.instance["4d"]["Text"] = id;
 					item.instance["4d"]["Name"] = [[InactiveOption]];
+					item.instance["4d"]["ZIndex"] = 1704;
 					
 					-- UIStroke
 					item.instance["4e"] = Instance.new("UIStroke", item.instance["4d"]);
@@ -1263,14 +1297,14 @@ function kavo:CreateLib(options)
 					-- Mouse Enter
 					item.instance["4d"].MouseEnter:Connect(function()
 						item.Hover = true
-						kavo:tween(item.instance["4e"], {Color = Color3.fromRGB(61,61,61)})
+						cursed:tween(item.instance["4e"], {Color = Color3.fromRGB(61,61,61)})
 					end)
 					
 					-- Mouse Leave
 					item.instance["4d"].MouseLeave:Connect(function()
 						item.Hover = false
 						if not item.MouseDown then
-							kavo:tween(item.instance["4e"], {Color = Color3.fromRGB(81,81,81)})
+							cursed:tween(item.instance["4e"], {Color = Color3.fromRGB(81,81,81)})
 						end
 					end)
 					
@@ -1279,8 +1313,8 @@ function kavo:CreateLib(options)
 						if gpe then return end
 						if input.UserInputType == Enum.UserInputType.MouseButton1 and item.Hover then
 							item.MouseDown = true
-							kavo:tween(item.instance["4d"], {BackgroundColor3 = Color3.fromRGB(51,51,51)})
-							kavo:tween(item.instance["4e"], {Color = Color3.fromRGB(81,81,81)})
+							cursed:tween(item.instance["4d"], {BackgroundColor3 = Color3.fromRGB(51,51,51)})
+							cursed:tween(item.instance["4e"], {Color = Color3.fromRGB(81,81,81)})
 
 							-- Call the callback with the value
 							options.callback(value)
@@ -1300,11 +1334,11 @@ function kavo:CreateLib(options)
 						if input.UserInputType == Enum.UserInputType.MouseButton1 then
 							item.MouseDown = false
 							if item.Hover then
-								kavo:tween(item.instance["4d"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
-								kavo:tween(item.instance["4e"], {Color = Color3.fromRGB(101,101,101)})
+								cursed:tween(item.instance["4d"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
+								cursed:tween(item.instance["4e"], {Color = Color3.fromRGB(101,101,101)})
 							else
-								kavo:tween(item.instance["4d"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
-								kavo:tween(item.instance["4e"], {Color = Color3.fromRGB(81,81,81)})
+								cursed:tween(item.instance["4d"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
+								cursed:tween(item.instance["4e"], {Color = Color3.fromRGB(81,81,81)})
 							end
 						end
 					end)
@@ -1328,7 +1362,7 @@ function kavo:CreateLib(options)
 				
 				function DropDown:Toggle()
 					if DropDown.Open then
-						kavo:tween(DropDown["45"], {Size = UDim2.new(1, 0, 0, 30)}, function()
+						cursed:tween(DropDown["45"], {Size = UDim2.new(1, 0, 0, 30)}, function()
 							DropDown["4b"].Visible = false
 						end)
 					else
@@ -1339,7 +1373,7 @@ function kavo:CreateLib(options)
 							end
 						end
 						DropDown["4b"].Visible = true
-						kavo:tween(DropDown["45"], {Size = UDim2.new(1, 0, 0, 30 + (count * 20) + 4)})
+						cursed:tween(DropDown["45"], {Size = UDim2.new(1, 0, 0, 30 + (count * 20) + 4)})
 					end	
 					DropDown.Open = not DropDown.Open
 					DropDown["4b"].Visible = DropDown.Open
@@ -1350,7 +1384,7 @@ function kavo:CreateLib(options)
 					DropDown["45"].MouseEnter:Connect(function()
 						DropDown.Hover = true
 
-						kavo:tween(DropDown["47"], {Color = Color3.fromRGB(61,61,61)})
+						cursed:tween(DropDown["47"], {Color = Color3.fromRGB(61,61,61)})
 
 					end)
 
@@ -1358,7 +1392,7 @@ function kavo:CreateLib(options)
 						DropDown.Hover = false
 
 						if not DropDown.MouseDown then
-							kavo:tween(DropDown["47"], {Color = Color3.fromRGB(81,81,81)})
+							cursed:tween(DropDown["47"], {Color = Color3.fromRGB(81,81,81)})
 						end
 					end)
 
@@ -1367,8 +1401,8 @@ function kavo:CreateLib(options)
 
 						if input.UserInputType == Enum.UserInputType.MouseButton1 and DropDown.Hover then
 							DropDown.MouseDown = true
-							kavo:tween(DropDown["45"], {BackgroundColor3 = Color3.fromRGB(51,51,51)})
-							kavo:tween(DropDown["47"], {Color = Color3.fromRGB(81,81,81)})
+							cursed:tween(DropDown["45"], {BackgroundColor3 = Color3.fromRGB(51,51,51)})
+							cursed:tween(DropDown["47"], {Color = Color3.fromRGB(81,81,81)})
 							DropDown:Toggle()
 						end
 					end)
@@ -1381,12 +1415,12 @@ function kavo:CreateLib(options)
 
 							if DropDown.Hover then
 								-- Hover state	
-								kavo:tween(DropDown["45"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
-								kavo:tween(DropDown["47"], {Color = Color3.fromRGB(101,101,101)})
+								cursed:tween(DropDown["45"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
+								cursed:tween(DropDown["47"], {Color = Color3.fromRGB(101,101,101)})
 							else
 								-- Reset
-								kavo:tween(DropDown["45"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
-								kavo:tween(DropDown["47"], {Color = Color3.fromRGB(81,81,81)})
+								cursed:tween(DropDown["45"], {BackgroundColor3 = Color3.fromRGB(31,31,31)})
+								cursed:tween(DropDown["47"], {Color = Color3.fromRGB(81,81,81)})
 
 							end
 						end
@@ -1398,7 +1432,7 @@ function kavo:CreateLib(options)
 		end
 		
 		function Tab:NewTextBox(options)
-			options = kavo:validate({
+			options = cursed:validate({
 				title = "Preview TextBox",
 				placeholder = "...",
 				callback = function(text) end
@@ -1415,6 +1449,7 @@ function kavo:CreateLib(options)
 				TextBox["68"]["Size"] = UDim2.new(1, 0, 0, 30);
 				TextBox["68"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				TextBox["68"]["Name"] = [[TextBox]];
+				TextBox["68"]["ZIndex"] = 1800;
 
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.TextBox.UICorner
@@ -1441,6 +1476,7 @@ function kavo:CreateLib(options)
 				TextBox["6b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				TextBox["6b"]["Text"] = options.title;
 				TextBox["6b"]["Name"] = [[Title]];
+				TextBox["6b"]["ZIndex"] = 1801;
 
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.TextBox.UIPadding
@@ -1469,6 +1505,7 @@ function kavo:CreateLib(options)
 				TextBox["6d"]["Text"] = [[...]];
 				TextBox["6d"]["TextXAlignment"] = Enum.TextXAlignment.Center;
 				TextBox["6d"]["TextScaled"] = true
+				TextBox["6d"]["ZIndex"] = 1802;
 
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.TextBox.Write.UICorner
@@ -1505,11 +1542,11 @@ function kavo:CreateLib(options)
 			-- Hover effect on the container (optional)
 			local hoverConnection = nil
 			TextBox["68"].MouseEnter:Connect(function()
-				kavo:tween(TextBox["6a"], {Color = Color3.fromRGB(101,101,101)})
+				cursed:tween(TextBox["6a"], {Color = Color3.fromRGB(101,101,101)})
 			end)
 
 			TextBox["68"].MouseLeave:Connect(function()
-				kavo:tween(TextBox["6a"], {Color = Color3.fromRGB(81,81,81)})
+				cursed:tween(TextBox["6a"], {Color = Color3.fromRGB(81,81,81)})
 			end)
 
 			-- Return methods for external control
@@ -1535,7 +1572,7 @@ function kavo:CreateLib(options)
 		end
 		
 		function Tab:NewKeyBind(options)
-			options = kavo:validate({
+			options = cursed:validate({
 				title = "Preview Keybind",
 				defaultKey = "None",
 				defaultEnabled = true,
@@ -1558,6 +1595,7 @@ function kavo:CreateLib(options)
 				KeyBind["70"]["Size"] = UDim2.new(1, 0, 0, 30);
 				KeyBind["70"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				KeyBind["70"]["Name"] = [[KeyBind]];
+				KeyBind["70"]["ZIndex"] = 1900;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.KeyBind.UICorner
 				KeyBind["71"] = Instance.new("UICorner", KeyBind["70"]);
@@ -1581,6 +1619,7 @@ function kavo:CreateLib(options)
 				KeyBind["73"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 				KeyBind["73"]["Text"] = options.title;
 				KeyBind["73"]["Name"] = [[Title]];
+				KeyBind["73"]["ZIndex"] = 1901;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.KeyBind.UIPadding
 				KeyBind["74"] = Instance.new("UIPadding", KeyBind["70"]);
@@ -1605,6 +1644,7 @@ function kavo:CreateLib(options)
 				KeyBind["75"]["Text"] = KeyBind.CurrentKey;
 				KeyBind["75"]["Name"] = [[KeyWrite]];
 				KeyBind["75"]["Position"] = UDim2.new(1, -3, 0.5, 0);
+				KeyBind["75"]["ZIndex"] = 1902;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.KeyBind.KeyWrite.UICorner
 				KeyBind["76"] = Instance.new("UICorner", KeyBind["75"]);
@@ -1631,6 +1671,7 @@ function kavo:CreateLib(options)
 				KeyBind["78"]["Text"] = KeyBind.State and "✓" or "✗";
 				KeyBind["78"]["Name"] = [[SwitchBtn]];
 				KeyBind["78"]["Position"] = UDim2.new(1, -46, 0.5, 0);
+				KeyBind["78"]["ZIndex"] = 1903;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.KeyBind.SwitchBtn.UICorner
 				KeyBind["79"] = Instance.new("UICorner", KeyBind["78"]);
@@ -1658,6 +1699,7 @@ function kavo:CreateLib(options)
 				KeyBind["7b"]["Visible"] = false;
 				KeyBind["7b"]["Name"] = [[ListeningIndicator]];
 				KeyBind["7b"]["Position"] = UDim2.new(1, -3, 0.5, 0);
+				KeyBind["7b"]["ZIndex"] = 1904;
 
 				-- Listening Indicator Corner
 				KeyBind["7c"] = Instance.new("UICorner", KeyBind["7b"]);
@@ -1667,8 +1709,6 @@ function kavo:CreateLib(options)
 				KeyBind["7d"] = Instance.new("UIStroke", KeyBind["7b"]);
 				KeyBind["7d"]["Color"] = Color3.fromRGB(81, 81, 81);
 			end
-
-			-- ========== FUNCTIONALITY (No changes to render above) ==========
 
 			-- Helper function to convert InputType to readable string
 			local function getKeyName(input)
@@ -1688,12 +1728,12 @@ function kavo:CreateLib(options)
 			-- Function to update switch button appearance
 			local function updateSwitchButton()
 				if KeyBind.State then
-					kavo:tween(KeyBind["78"], {BackgroundColor3 = Color3.fromRGB(9, 141, 0)})
-					kavo:tween(KeyBind["7a"], {Color = Color3.fromRGB(14, 213, 0)})
+					cursed:tween(KeyBind["78"], {BackgroundColor3 = Color3.fromRGB(9, 141, 0)})
+					cursed:tween(KeyBind["7a"], {Color = Color3.fromRGB(14, 213, 0)})
 					KeyBind["78"].Text = "✓"
 				else
-					kavo:tween(KeyBind["78"], {BackgroundColor3 = Color3.fromRGB(51, 51, 51)})
-					kavo:tween(KeyBind["7a"], {Color = Color3.fromRGB(81, 81, 81)})
+					cursed:tween(KeyBind["78"], {BackgroundColor3 = Color3.fromRGB(51, 51, 51)})
+					cursed:tween(KeyBind["7a"], {Color = Color3.fromRGB(81, 81, 81)})
 					KeyBind["78"].Text = ""
 				end
 			end
@@ -1755,30 +1795,30 @@ function kavo:CreateLib(options)
 
 			-- Hover effects
 			KeyBind["70"].MouseEnter:Connect(function()
-				kavo:tween(KeyBind["72"], {Color = Color3.fromRGB(101,101,101)})
+				cursed:tween(KeyBind["72"], {Color = Color3.fromRGB(101,101,101)})
 			end)
 
 			KeyBind["70"].MouseLeave:Connect(function()
-				kavo:tween(KeyBind["72"], {Color = Color3.fromRGB(81,81,81)})
+				cursed:tween(KeyBind["72"], {Color = Color3.fromRGB(81,81,81)})
 			end)
 
 			KeyBind["75"].MouseEnter:Connect(function()
-				kavo:tween(KeyBind["77"], {Color = Color3.fromRGB(101,101,101)})
+				cursed:tween(KeyBind["77"], {Color = Color3.fromRGB(101,101,101)})
 			end)
 
 			KeyBind["75"].MouseLeave:Connect(function()
-				kavo:tween(KeyBind["77"], {Color = Color3.fromRGB(81,81,81)})
+				cursed:tween(KeyBind["77"], {Color = Color3.fromRGB(81,81,81)})
 			end)
 
 			KeyBind["78"].MouseEnter:Connect(function()
-				kavo:tween(KeyBind["7a"], {Color = Color3.fromRGB(101,101,101)})
+				cursed:tween(KeyBind["7a"], {Color = Color3.fromRGB(101,101,101)})
 			end)
 
 			KeyBind["78"].MouseLeave:Connect(function()
 				if KeyBind.State then
-					kavo:tween(KeyBind["7a"], {Color = Color3.fromRGB(14, 213, 0)})
+					cursed:tween(KeyBind["7a"], {Color = Color3.fromRGB(14, 213, 0)})
 				else
-					kavo:tween(KeyBind["7a"], {Color = Color3.fromRGB(81,81,81)})
+					cursed:tween(KeyBind["7a"], {Color = Color3.fromRGB(81,81,81)})
 				end
 			end)
 
@@ -1818,4 +1858,4 @@ function kavo:CreateLib(options)
 	return GUI
 end
 
-return kavo
+return cursed
