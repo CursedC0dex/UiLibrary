@@ -270,7 +270,7 @@ function cursed:CreateLib(options)
 		GUI["10"]["Position"] = UDim2.new(0, 0, 0, 30);
 		GUI["10"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 		GUI["10"]["Name"] = [[Navigation]];
-		GUI["00"]["ZIndex"] = 1007;
+		GUI["10"]["ZIndex"] = 1007;
 
 		-- StarterGui.MyLibrary.Main.Navigation.UICorner
 		GUI["11"] = Instance.new("UICorner", GUI["10"]);
@@ -854,19 +854,19 @@ function cursed:CreateLib(options)
 				Slider["3c"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Slider.Title
-				Slider["3f"] = Instance.new("TextLabel", Slider["3a"]);
-				Slider["3f"]["BorderSizePixel"] = 0;
-				Slider["3f"]["TextSize"] = 14;
-				Slider["3f"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-				Slider["3f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-				Slider["3f"]["FontFace"] = Font.new([[rbxasset://fonts/families/Ubuntu.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-				Slider["3f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-				Slider["3f"]["BackgroundTransparency"] = 1;
-				Slider["3f"]["Size"] = UDim2.new(1, -25, 1, -12);
-				Slider["3f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-				Slider["3f"]["Text"] = options.title;
-				Slider["3f"]["Name"] = [[Title]];
-				Slider["3f"]["ZIndex"] = 1501;
+				Slider["3d"] = Instance.new("TextLabel", Slider["3a"]);
+				Slider["3d"]["BorderSizePixel"] = 0;
+				Slider["3d"]["TextSize"] = 14;
+				Slider["3d"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+				Slider["3d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+				Slider["3d"]["FontFace"] = Font.new([[rbxasset://fonts/families/Ubuntu.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+				Slider["3d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+				Slider["3d"]["BackgroundTransparency"] = 1;
+				Slider["3d"]["Size"] = UDim2.new(1, -25, 1, -12);
+				Slider["3d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+				Slider["3d"]["Text"] = options.title;
+				Slider["3d"]["Name"] = [[Title]];
+				Slider["3d"]["ZIndex"] = 1501;
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.Slider.UIPadding
 				Slider["42"] = Instance.new("UIPadding", Slider["3a"]);
