@@ -47,6 +47,7 @@ function cursed:CreateLib(options)
 		GUI["1"]["Enabled"] = true;
 		GUI["1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
 		GUI["1"]["Name"] = [[MyLibrary]];
+		GUI["1"]["ResetOnSpawn"] = false
 
 		-- StarterGui.MyLibrary.Main
 		GUI["2"] = Instance.new("Frame", GUI["1"]);
