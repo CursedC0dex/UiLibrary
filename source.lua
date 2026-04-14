@@ -42,12 +42,14 @@ function cursed:CreateLib(options)
 		-- Main Frame
 	do
 		-- StarterGui.MyLibrary
-		GUI["1"] = Instance.new("ScreenGui", game:GetService("CoreGui"));
+		
 		GUI["1"]["IgnoreGuiInset"] = true;
 		GUI["1"]["Enabled"] = true;
 		GUI["1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
 		GUI["1"]["Name"] = [[MyLibrary]];
+		GUI["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 		GUI["1"]["ResetOnSpawn"] = false
+		GUI["1"]["DisplayOrder"] = 999;
 
 		-- StarterGui.MyLibrary.Main
 		GUI["2"] = Instance.new("Frame", GUI["1"]);
