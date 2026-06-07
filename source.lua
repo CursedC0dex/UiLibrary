@@ -1665,9 +1665,9 @@ function cursed:CreateLib(options)
 				KeyBind["7d"]["Color"] = Color3.fromRGB(81, 81, 81);
 			end
 
-			-- ========== FUNCTIONALITY (No changes to render above) ==========
+			-- Methods
 
-			-- Helper function to convert InputType to readable string
+
 			local function getKeyName(input)
 				if input.UserInputType == Enum.UserInputType.Keyboard then
 					return input.KeyCode.Name
