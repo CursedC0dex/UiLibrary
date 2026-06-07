@@ -30,7 +30,7 @@ end
 
 function cursed:CreateLib(options)
 	options = cursed:validate({
-		name =  "UI Library Test"
+		name =  "Cursed UI Library"
 	}, options or {})
 
 	local GUI = {
@@ -471,7 +471,7 @@ function cursed:CreateLib(options)
 		
 		function Tab:NewButton(options)
 			options = cursed:validate({
-				name =  "Buton",
+				title =  "Buton",
 				callback = function() end
 			}, options or {})
 
@@ -1436,7 +1436,7 @@ function cursed:CreateLib(options)
 				TextBox["6b"]["BackgroundTransparency"] = 1;
 				TextBox["6b"]["Size"] = UDim2.new(1, -60, 1, 0);
 				TextBox["6b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-				TextBox["6b"]["Text"] = [[TextBox]];
+				TextBox["6b"]["Text"] = options.title;
 				TextBox["6b"]["Name"] = [[Title]];
 
 
