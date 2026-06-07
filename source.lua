@@ -11,8 +11,6 @@ local mouse = lp:GetMouse()
 local viewport = workspace.CurrentCamera.ViewportSize
 local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
-
-
 local cursed = {}
 
 function cursed:validate(defaults, options)
@@ -186,7 +184,7 @@ function cursed:CreateLib(options)
 		GUI["b"]["Position"] = UDim2.new(1, -4, 0.5, 0);
 		GUI["b"].InputBegan:Connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 then
-				GUI["1"]:Destroy()  -- This destroys the entire ScreenGui
+				GUI["1"]:Destroy()
 			end
 		end)
 
@@ -323,7 +321,7 @@ function cursed:CreateLib(options)
 	
 	function GUI:NewTab(options)
 		options = cursed:validate({
-			name =  "Preview Tab",
+			name =  "Tab",
 			icon = "rbxassetid://6764432408"
 		}, options or {})
 
@@ -417,7 +415,6 @@ function cursed:CreateLib(options)
 				cursed:tween(Tab["1a"], {TextColor3 = Color3.fromRGB(255,255,255)})
 				cursed:tween(Tab["1c"], {ImageColor3 = Color3.fromRGB(255,255,255)})
 
-				-- ✅ Show this tab's content
 				Tab["1f"].Visible = true
 
 				GUI.CurrentTab = Tab
@@ -432,7 +429,6 @@ function cursed:CreateLib(options)
 				cursed:tween(Tab["1a"], {TextColor3 = Color3.fromRGB(150,150,150)})
 				cursed:tween(Tab["1c"], {ImageColor3 = Color3.fromRGB(150, 150, 150)})
 
-				-- ✅ Hide this tab's content
 				Tab["1f"].Visible = false
 			end
 		end
@@ -475,7 +471,7 @@ function cursed:CreateLib(options)
 		
 		function Tab:NewButton(options)
 			options = cursed:validate({
-				name =  "Preview Buton",
+				name =  "Buton",
 				callback = function() end
 			}, options or {})
 
@@ -594,7 +590,7 @@ function cursed:CreateLib(options)
 		
 		function Tab:NewLabel(options)
 			options = cursed:validate({
-				message = "Preview Label",
+				message = "Label",
 				icon = ""
 			}, options or {})
 			local Label = {}
@@ -663,7 +659,7 @@ function cursed:CreateLib(options)
 		
 		function Tab:NewInfo(options)
 			options = cursed:validate({
-				message = "Preview Info",
+				message = "Info",
 				icon = "rbxassetid://8445471499"
 			}, options or {})
 			local Info = {}
@@ -732,7 +728,7 @@ function cursed:CreateLib(options)
 		
 		function Tab:NewWarning(options)
 			options = cursed:validate({
-				message = "Preview Warning",
+				message = "Warning",
 				icon = "rbxassetid://6764432408"
 			}, options or {})
 			local Warning = {}
@@ -802,7 +798,7 @@ function cursed:CreateLib(options)
 		
 		function Tab:NewSlider(options)
 			options = cursed:validate({
-				title = "Preview Slider",
+				title = "Slider",
 				min = 0,
 				max = 100,
 				callback = function(v) end
@@ -990,7 +986,7 @@ function cursed:CreateLib(options)
 		
 		function Tab:NewToggle(options)
 			options = cursed:validate({
-				title = "Preview Toggle",
+				title = "Toggle",
 				callback = function() end
 			}, options or {})
 
@@ -1030,7 +1026,7 @@ function cursed:CreateLib(options)
 				Toggle["59"]["BackgroundTransparency"] = 1;
 				Toggle["59"]["Size"] = UDim2.new(1, -20, 1, 0);
 				Toggle["59"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-				Toggle["59"]["Text"] = [[Toggle]];
+				Toggle["59"]["Text"] = options.title;
 				Toggle["59"]["Name"] = [[Title]];
 
 				-- StarterGui.MyLibrary.Main.ContentContainer.HomeTab.ToggleInActive.UIPadding
@@ -1142,7 +1138,7 @@ function cursed:CreateLib(options)
 		
 		function Tab:NewDropDown(options)
 			options = cursed:validate({
-				title = "Preview DropDown",
+				title = "DropDown",
 				callback = function(v) end,
 				items = {}
 			}, options or {})
@@ -1400,7 +1396,7 @@ function cursed:CreateLib(options)
 		
 		function Tab:NewTextBox(options)
 			options = cursed:validate({
-				title = "Preview TextBox",
+				title = "TextBox",
 				placeholder = "...",
 				callback = function(text) end
 			}, options or {})
@@ -1537,7 +1533,7 @@ function cursed:CreateLib(options)
 		
 		function Tab:NewKeyBind(options)
 			options = cursed:validate({
-				title = "Preview Keybind",
+				title = "Keybind",
 				defaultKey = "None",
 				defaultEnabled = true,
 				callback = function(key, isEnabled) end
